@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tegeta.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,6 +15,7 @@ class HomeFragment : Fragment() {
 
     private val homeViewModel: HomeViewModel by viewModels()
     private var _binding: FragmentHomeBinding? = null
+    private lateinit var adapter: HomeCarsAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -27,12 +28,18 @@ class HomeFragment : Fragment() {
     ): View? {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        adapter = HomeCarsAdapter()
+        binding.recycler.layoutManager = LinearLayoutManager(context)
+        binding.recycler.adapter = adapter
 
         homeViewModel.cars.observe(viewLifecycleOwner) { cars ->
-            Toast.makeText(context, cars.toString(), Toast.LENGTH_SHORT).show()
+            adapter.updateData(cars)
         }
-        return root
     }
 
     override fun onDestroyView() {
