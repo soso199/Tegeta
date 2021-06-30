@@ -2,9 +2,12 @@ package com.example.tegeta.data.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
+import androidx.room.Update
 import com.example.tegeta.data.model.CurrentCar
 import kotlinx.coroutines.flow.Flow
+
 
 @Dao
 interface CurrentCarsDao {
@@ -16,4 +19,7 @@ interface CurrentCarsDao {
 
     @Insert
     suspend fun insertCar(car: CurrentCar): Long
+
+    @Update(onConflict = REPLACE)
+    fun updateCar(car: CurrentCar)
 }

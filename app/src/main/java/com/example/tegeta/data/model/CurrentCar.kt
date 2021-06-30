@@ -7,7 +7,14 @@ import java.util.*
 
 @Entity(tableName = "current_cars")
 data class CurrentCar(
-    @PrimaryKey
     @ColumnInfo(name = "number") val number: String,
+    @ColumnInfo(name = "service_name") val serviceName: String,
+    @ColumnInfo(name = "status") val status: Int,
     @ColumnInfo(name = "add_date") val addDate: Calendar = Calendar.getInstance(),
-)
+    @ColumnInfo(name = "amount") val amount: Double? = null,
+    @ColumnInfo(name = "end_date") val endDate: Calendar = Calendar.getInstance(),
+) {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    var id: Long = 0
+}

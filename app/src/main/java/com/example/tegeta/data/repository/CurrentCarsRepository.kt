@@ -14,4 +14,6 @@ class CurrentCarsRepository @Inject constructor(private val currentCarsDao: Curr
     fun getCar(carNumber: String) = currentCarsDao.getCar(carNumber)
 
     suspend fun insertCar(car: CurrentCar) = currentCarsDao.insertCar(car)
+
+    suspend fun updateCar(car: CurrentCar) = currentCarsDao.updateCar(car)
 }
