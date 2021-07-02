@@ -11,7 +11,9 @@ import com.example.tegeta.NavigationInterface
 import com.example.tegeta.R
 import com.example.tegeta.databinding.AddCarFragmentBinding
 import com.example.tegeta.databinding.FragmentHistoryBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddCarFragment : Fragment() {
 
     companion object {
@@ -36,7 +38,6 @@ class AddCarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as? NavigationInterface)?.hideAddFab()
-
     }
 
     override fun onDestroyView() {

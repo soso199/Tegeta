@@ -14,6 +14,9 @@ interface CurrentCarsDao {
     @Query("SELECT * FROM current_cars ORDER BY add_date")
     fun getCars(): Flow<List<CurrentCar>>
 
+    @Query("SELECT * FROM current_cars WHERE add_date BETWEEN :daySt AND :dayEt ORDER BY add_date")
+    fun getCurrentCars(daySt: Long, dayEt: Long): Flow<List<CurrentCar>>
+
     @Query("SELECT * FROM current_cars WHERE number = :carNumber")
     fun getCar(carNumber: String): Flow<CurrentCar>
 
