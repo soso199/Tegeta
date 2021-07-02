@@ -10,4 +10,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_history">History</string>
     <string name="add_car_title">Add Car</string>
+    <string name="car_number_hint">Car number</string>
+    <string name="choose_service_text">Choose Service</string>
+    <string name="end_service_text">End</string>
 </resources>
