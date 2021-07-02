@@ -16,5 +16,10 @@
         android:name="com.example.tegeta.ui.history.HistoryFragment"
         android:label="@string/menu_history"
         tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/addCarFragment"
+        android:name="com.example.tegeta.ui.add.AddCarFragment"
+        android:label="@string/add_car_title"
+        tools:layout="@layout/add_car_fragment" />
 
 </navigation>

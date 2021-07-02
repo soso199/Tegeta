@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tegeta.NavigationInterface
 import com.example.tegeta.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,6 +34,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as? NavigationInterface)?.showAddFab()
+
         adapter = HomeCarsAdapter()
         binding.recycler.layoutManager = LinearLayoutManager(context)
         binding.recycler.adapter = adapter
