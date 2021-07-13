@@ -1,9 +1,6 @@
 package com.example.tegeta.ui.add
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.tegeta.data.model.CurrentCar
 import com.example.tegeta.data.model.ServiceType
 import com.example.tegeta.data.model.Status
@@ -16,10 +13,11 @@ import javax.inject.Inject
 @HiltViewModel
 class AddCarViewModel @Inject internal constructor(
     private val currentCarsRepository: CurrentCarsRepository,
-    private val servicesRepository: ServicesRepository
+    servicesRepository: ServicesRepository
 ) : ViewModel() {
 
     var chosenService: String = ""
+    val added = MutableLiveData<Boolean>()
 
     val services: LiveData<List<ServiceType>> =
         servicesRepository.getServices().asLiveData()
@@ -33,6 +31,7 @@ class AddCarViewModel @Inject internal constructor(
                     Status.ADDED.value
                 )
             )
+            added.value = true
         }
     }
 }

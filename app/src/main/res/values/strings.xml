@@ -13,4 +13,5 @@
     <string name="car_number_hint">Car number</string>
     <string name="choose_service_text">Choose Service</string>
     <string name="end_service_text">End</string>
+    <string name="edd_service_text">Add</string>
 </resources>

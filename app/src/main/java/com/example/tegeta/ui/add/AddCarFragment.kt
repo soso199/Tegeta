@@ -10,8 +10,11 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.example.tegeta.NavigationInterface
 import com.example.tegeta.databinding.AddCarFragmentBinding
+import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -89,8 +92,12 @@ class AddCarFragment : Fragment() {
             viewModel.addCar(binding.numberInput.text.toString())
         }
 
-    }
+        viewModel.added.observe(viewLifecycleOwner,{added->
+            if (added)
+                Navigation.findNavController(binding.root).popBackStack()
+        })
 
+    }
     fun checkReady() {
         binding.btnEnd.isEnabled =
             viewModel.chosenService.isNotEmpty() && binding.numberInput.text.toString().isNotEmpty()

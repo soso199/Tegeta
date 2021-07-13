@@ -45,6 +45,11 @@ class HomeFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        homeViewModel.getCars()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
