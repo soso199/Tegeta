@@ -17,4 +17,7 @@
     <string name="status_added">დამატებული</string>
     <string name="status_finished">დასრულებული</string>
     <string name="amount_placeholder">ღირებულება  %s ₾</string>
+    <string name="dialog_cancel">გაუქმება</string>
+    <string name="amount_dialog_finish">დასრულება</string>
+    <string name="amount_dialog_title">მიუთითეთ თანხა</string>
 </resources>
