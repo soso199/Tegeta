@@ -37,7 +37,15 @@ class HomeCarsAdapter(private val onAddClicked: (CurrentCar) -> Unit) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = list[position]
-        holder.binding.number.text = item.number
+        holder.binding.number.text = item.number.let {
+            if (it.length == 7) {
+                val builder = StringBuilder(it)
+                builder.insert(2, '-')
+                builder.insert(6, '-')
+                builder.toString()
+            } else
+                it
+        }
         holder.binding.serviceType.text = item.serviceName
         when (Status.fromInt(item.status)) {
             Status.ADDED -> {

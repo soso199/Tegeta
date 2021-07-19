@@ -77,12 +77,12 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="30dp"
-                android:textSize="26sp"
                 android:gravity="center"
-                android:visibility="gone"
                 android:textColor="@color/green"
-                tools:text="20 ₾"
-                app:layout_constraintTop_toBottomOf="@id/serviceType" />
+                android:textSize="20sp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/serviceType"
+                tools:text="20 ₾" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEnd"

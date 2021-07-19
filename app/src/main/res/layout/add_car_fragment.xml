@@ -40,7 +40,14 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/numberInput"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:imeOptions="actionDone"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+            android:inputType="textVisiblePassword"
+            android:maxLength="7"
+            android:singleLine="true"
+            android:maxLines="1" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
