@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tegeta.NavigationInterface
+import com.example.tegeta.data.model.CurrentCar
 import com.example.tegeta.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,13 +37,17 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as? NavigationInterface)?.showAddFab()
 
-        adapter = HomeCarsAdapter()
+        adapter = HomeCarsAdapter(::onAddClicked)
         binding.recycler.layoutManager = LinearLayoutManager(context)
         binding.recycler.adapter = adapter
 
         homeViewModel.cars.observe(viewLifecycleOwner) { cars ->
             adapter.updateData(cars)
         }
+    }
+
+    private fun onAddClicked(car: CurrentCar) {
+        homeViewModel.endCurrentCar(car)
     }
 
     override fun onResume() {

@@ -53,26 +53,39 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="15dp"
                 android:textColor="@color/teal_200"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/status"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/number"
                 tools:text="ზეთის შეცვლა" />
 
             <TextView
                 android:id="@+id/status"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
                 android:layout_marginEnd="15dp"
                 android:gravity="end"
                 android:textColor="@color/yellow"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/serviceType"
+                app:layout_constraintTop_toTopOf="@id/serviceType"
                 tools:text="ელოდება" />
 
+            <TextView
+                android:id="@+id/amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30dp"
+                android:textSize="26sp"
+                android:gravity="center"
+                android:visibility="gone"
+                android:textColor="@color/green"
+                tools:text="20 ₾"
+                app:layout_constraintTop_toBottomOf="@id/serviceType" />
+
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEnd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"

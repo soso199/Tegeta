@@ -14,4 +14,7 @@
     <string name="choose_service_text">Choose Service</string>
     <string name="end_service_text">End</string>
     <string name="edd_service_text">Add</string>
+    <string name="status_added">დამატებული</string>
+    <string name="status_finished">დასრულებული</string>
+    <string name="amount_placeholder">%s ₾</string>
 </resources>
