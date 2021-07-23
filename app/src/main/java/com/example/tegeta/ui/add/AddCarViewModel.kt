@@ -13,7 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AddCarViewModel @Inject internal constructor(
     private val currentCarsRepository: CurrentCarsRepository,
-    servicesRepository: ServicesRepository
+    private val servicesRepository: ServicesRepository
 ) : ViewModel() {
 
     var chosenService: String = ""
@@ -32,6 +32,15 @@ class AddCarViewModel @Inject internal constructor(
                 )
             )
             added.value = true
+        }
+    }
+
+    fun addService(serviceName: String) {
+        if (services.value?.map { it.name }?.contains(serviceName) == false) {
+            viewModelScope.launch {
+                servicesRepository.insertService(ServiceType(serviceName))
+                chosenService = serviceName
+            }
         }
     }
 }

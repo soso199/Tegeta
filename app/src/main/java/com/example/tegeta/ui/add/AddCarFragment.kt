@@ -2,6 +2,7 @@ package com.example.tegeta.ui.add
 
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
 import android.text.Spanned
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -9,10 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.tegeta.NavigationInterface
+import com.example.tegeta.R
 import com.example.tegeta.databinding.AddCarFragmentBinding
 import com.example.tegeta.utils.NumberInputReplacementSpan
 import dagger.hilt.android.AndroidEntryPoint
@@ -99,6 +103,10 @@ class AddCarFragment : Fragment() {
                     }
 
                 }
+            services.map { it.name }.indexOf(viewModel.chosenService).let {
+                if (it != -1)
+                    binding.servicesSpinner.setSelection(it)
+            }
         }
 
         binding.numberInput.addTextChangedListener(numberTextChangeListener)
@@ -108,11 +116,42 @@ class AddCarFragment : Fragment() {
             viewModel.addCar(binding.numberInput.text.toString())
         }
 
+        binding.btnAddService.setOnClickListener {
+            showAddDialog()
+        }
+
         viewModel.added.observe(viewLifecycleOwner, { added ->
             if (added)
                 Navigation.findNavController(binding.root).popBackStack()
         })
 
+    }
+
+    private fun showAddDialog() {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(getString(R.string.service_dialog_title))
+        val input = EditText(context)
+        input.setRawInputType(InputType.TYPE_CLASS_TEXT)
+
+        builder.setView(input)
+        builder.setPositiveButton(
+            getString(R.string.service_dialog_add)
+        ) { dialog, _ ->
+            dialog.cancel()
+            val serviceName = input.text.toString()
+            if (serviceName.isNotEmpty()) {
+                viewModel.addService(serviceName)
+            }
+        }
+        builder.setNegativeButton(
+            getString(R.string.dialog_cancel)
+        ) { dialog, _ -> dialog.cancel() }
+        builder.create().apply {
+            this.setOnShowListener {
+                this.getButton(AlertDialog.BUTTON_POSITIVE)
+                    .setTextColor(resources.getColor(R.color.yellow))
+            }
+        }.show()
     }
 
     private fun addNumberSpans(editable: Editable, spaceIndices: IntArray) {

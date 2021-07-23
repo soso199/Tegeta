@@ -18,13 +18,25 @@
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/servicesSpinner"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:minHeight="50dp"
+        app:layout_constraintEnd_toStartOf="@id/btnAddService"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnAddService"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="20dp"
+        android:src="@android:drawable/ic_menu_add"
+        android:tint="@color/green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/servicesSpinner" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/numberInputLayout"
@@ -41,13 +53,13 @@
             android:id="@+id/numberInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lines="1"
-            android:imeOptions="actionDone"
             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+            android:imeOptions="actionDone"
             android:inputType="textVisiblePassword"
+            android:lines="1"
             android:maxLength="7"
-            android:singleLine="true"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

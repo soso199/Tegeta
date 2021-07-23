@@ -20,4 +20,6 @@
     <string name="dialog_cancel">გაუქმება</string>
     <string name="amount_dialog_finish">დასრულება</string>
     <string name="amount_dialog_title">მიუთითეთ თანხა</string>
+    <string name="service_dialog_title">სერვისის დასახელება</string>
+    <string name="service_dialog_add">დამატება</string>
 </resources>
